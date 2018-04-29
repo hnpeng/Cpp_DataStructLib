@@ -8,3 +8,4 @@ NPLib, A Reusable Cpp language DataStruct LIB. Develop by QtCreator5.10.1 Compil
   - IndexOutOfBoundersException
   - NoEnoughMemoryException
   - InvalidParameterException
+- Object

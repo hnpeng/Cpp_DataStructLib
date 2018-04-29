@@ -6,16 +6,16 @@
 using namespace std;
 using namespace NPLib;
 
-class Test
+class SPTest
 {
 public:
-    Test(int i) : i(i)
+    SPTest(int i) : i(i)
     {
-        cout << "Test()" << endl;
+        cout << "SPTest()" << endl;
     }
-    ~Test()
+    ~SPTest()
     {
-        cout << "~Test() is " << i << endl;
+        cout << "~SPTest() is " << i << endl;
     }
     void info()
     {
@@ -28,8 +28,8 @@ public:
 
 void SmartPointerCase()
 {
-    SmartPointer<Test> sp1 = new Test(5);
-    SmartPointer<Test> sp2 = new Test(3);
+    SmartPointer<SPTest> sp1 = new SPTest(5);
+    SmartPointer<SPTest> sp2 = new SPTest(3);
 
     sp2 = sp1;
 
@@ -37,6 +37,6 @@ void SmartPointerCase()
     cout << sp1.isNull() << endl;
     cout << sp2.isNull() << endl;
 
-    Test * t1 = sp2.getPointer();
+    SPTest * t1 = sp2.getPointer();
     t1->info();
 }

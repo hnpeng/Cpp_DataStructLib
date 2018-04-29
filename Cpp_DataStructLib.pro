@@ -6,5 +6,6 @@ CONFIG -= qt
 include(TestCase/TestCase.pri)
 include(SmartPointer/SmartPointer.pri)
 include(Exception/Exception.pri)
+include(Object/Object.pri)
 
 SOURCES += main.cpp
