@@ -4,12 +4,12 @@
 
 using namespace NPLib;
 
-void *Object::operator new(size_t size)
+void *Object::operator new(size_t size) throw()
 {
     return malloc(size);
 }
 
-void *Object::operator new[](size_t size)
+void *Object::operator new[](size_t size) throw()
 {
     return malloc(size);
 }

@@ -39,4 +39,7 @@ void SmartPointerCase()
 
     SPTest * t1 = sp2.getPointer();
     t1->info();
+
+    SmartPointer<int>* pSp = new SmartPointer<int>();
+    delete pSp;
 }

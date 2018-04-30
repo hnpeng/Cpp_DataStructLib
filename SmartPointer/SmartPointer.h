@@ -1,10 +1,12 @@
 #ifndef SMARTPOINTER_H
 #define SMARTPOINTER_H
 
+#include "Object/Object.h"
+
 namespace NPLib {
 
 template <typename T>
-class SmartPointer
+class SmartPointer : public Object
 {
 public:
     SmartPointer(T* p =  nullptr)

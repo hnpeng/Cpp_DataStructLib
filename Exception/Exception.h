@@ -1,12 +1,14 @@
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
 
+#include "Object/Object.h"
+
 #define THROW_EXCEPTION(e, m) (throw e(m, __FILE__, __LINE__))
 
 namespace NPLib {
 
 
-class Exception
+class Exception : public Object
 {
 public:
     Exception(const char* message);
@@ -136,6 +138,29 @@ public:
         Exception(obj) { }
 
     InvalidParameterException& operator =(const InvalidParameterException& rhs)
+    {
+        Exception::operator =(rhs);
+
+        return *this;
+    }
+};
+
+class InvalidOperationExcpetion : public Exception
+{
+public:
+    InvalidOperationExcpetion() :
+        Exception(nullptr) { }
+    InvalidOperationExcpetion(const char* file, int line) :
+        Exception(file, line) { }
+    InvalidOperationExcpetion(const char* message) :
+        Exception(message) { }
+    InvalidOperationExcpetion(const char* message, const char* file, int line) :
+        Exception(message, file, line) { }
+
+    InvalidOperationExcpetion(const InvalidOperationExcpetion& obj) :
+        Exception(obj) { }
+
+    InvalidOperationExcpetion& operator =(const InvalidOperationExcpetion& rhs)
     {
         Exception::operator =(rhs);
 

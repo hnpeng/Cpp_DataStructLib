@@ -38,4 +38,6 @@ void ExceptionCase()
         cout << e.message() << endl;
         cout << e.location() << endl;
     }
+    InvalidOperationExcpetion* e = new InvalidOperationExcpetion("InvalidOperationException", __FILE__, __LINE__);
+    delete e;
 }

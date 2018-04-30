@@ -8,8 +8,8 @@ namespace NPLib {
 class Object
 {
 public:
-    void* operator new(size_t size);
-    void* operator new[](size_t size);
+    void* operator new(size_t size) throw();
+    void* operator new[](size_t size) throw();
     void operator delete(void* p);
     void operator delete[](void* p);
 
