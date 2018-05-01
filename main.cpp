@@ -7,6 +7,8 @@
 #include "TestCase/ObjectCase.h"
 #include "TestCase/StaticListCase.h"
 #include "TestCase/DynamicListCase.h"
+#include "TestCase/StaticArrayCase.h"
+#include "TestCase/DynamicArrayCase.h"
 
 using namespace std;
 //using namespace NPLib;
@@ -17,7 +19,9 @@ int main()
 //    ExceptionCase();
 //    ObjectCase();
 //    StaticListCase();
-    DynamicListCase();
+//    DynamicListCase();
+//    StaticArrayCase();
+    DynamicArrayCase();
 
     cout << "Hello World!" << endl;
     return 0;

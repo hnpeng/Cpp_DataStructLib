@@ -8,5 +8,6 @@ include(SmartPointer/SmartPointer.pri)
 include(Exception/Exception.pri)
 include(Object/Object.pri)
 include(List/List.pri)
+include(Array/Array.pri)
 
 SOURCES += main.cpp
