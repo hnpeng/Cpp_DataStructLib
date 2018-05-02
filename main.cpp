@@ -9,6 +9,7 @@
 #include "TestCase/DynamicListCase.h"
 #include "TestCase/StaticArrayCase.h"
 #include "TestCase/DynamicArrayCase.h"
+#include "TestCase/LinkListCase.h"
 
 using namespace std;
 //using namespace NPLib;
@@ -21,7 +22,8 @@ int main()
 //    StaticListCase();
 //    DynamicListCase();
 //    StaticArrayCase();
-    DynamicArrayCase();
+//    DynamicArrayCase();
+    LinkListCase();
 
     cout << "Hello World!" << endl;
     return 0;

@@ -13,6 +13,9 @@ public:
     void operator delete(void* p);
     void operator delete[](void* p);
 
+    bool operator ==(const Object& obj);
+//    virtual bool operator !=(const Object& obj) const;
+
     virtual ~Object() = 0;
 };
 

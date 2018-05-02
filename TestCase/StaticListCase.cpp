@@ -6,7 +6,7 @@
 using namespace NPLib;
 using namespace std;
 
-class SLTest
+class SLTest : public Object
 {
 public:
     SLTest() : i(0)

@@ -10,7 +10,7 @@ template <typename T>
 class SeqList : public List<T>
 {
 public:
-    virtual bool insert(int pos, const T& element)
+    bool insert(int pos, const T& element)
     {
         bool ret = pos >= 0 && capacity() > m_length;
 
@@ -28,12 +28,12 @@ public:
         return ret;
     }
 
-    virtual bool append(const T& element)
+    bool append(const T& element)
     {
         return insert(m_length, element);
     }
 
-    virtual bool remove(int pos, T& element)
+    bool remove(int pos, T& element)
     {
         int ret = 0 <= pos && pos < m_length;
 
@@ -50,7 +50,7 @@ public:
         return ret;
     }
 
-    virtual bool get(int pos, T& element) const
+    bool get(int pos, T& element) const
     {
         bool ret = 0 <= pos && pos < m_length;
 
@@ -61,7 +61,7 @@ public:
         return ret;
     }
 
-    virtual bool set(int pos, const T& element)
+    bool set(int pos, const T& element)
     {
         bool ret = 0 <= pos && pos < m_length;
 
@@ -72,12 +72,26 @@ public:
         return ret;
     }
 
-    virtual void clear()
+    int find(const T& element) const
+    {
+        int ret = -1;
+
+        for (int i=0; i < m_length; i++) {
+            if (m_array[i] == element) {
+                ret = i;
+                break;
+            }
+        }
+
+        return ret;
+    }
+
+    void clear()
     {
         m_length = 0;
     }
 
-    virtual int length() const
+    int length() const
     {
         return m_length;
     }
