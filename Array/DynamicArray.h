@@ -9,7 +9,7 @@ template <typename T>
 class DynamicArray : public Array<T>
 {
 public:
-    DynamicArray(int length)
+    DynamicArray(int length = 0)
     {
         init(new T[length], length);
     }

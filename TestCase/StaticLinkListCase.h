@@ -1,0 +1,7 @@
+#ifndef STATICLINKLISTCASE_H
+#define STATICLINKLISTCASE_H
+
+
+void StaticLinkListCase();
+
+#endif // STATICLINKLISTCASE_H

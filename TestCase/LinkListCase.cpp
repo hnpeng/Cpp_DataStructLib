@@ -27,6 +27,11 @@ public:
         cout << "LLTest(const LLTest& obj) i = " << i << endl;
     }
 
+    ~LLTest()
+    {
+        cout << "~LLTest()" << endl;
+    }
+
     int i;
 };
 

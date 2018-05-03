@@ -9,12 +9,6 @@ namespace NPLib {
 template <typename T>
 class LinkList : public List<T>
 {
-    struct Node : public Object
-    {
-        T element;
-        Node* next;
-    };
-
 public:
     LinkList()
     {
@@ -29,7 +23,7 @@ public:
         bool ret = 0 <= pos && pos <= m_length;
 
         if (ret) {
-            Node* newNode = new Node;
+            Node* newNode = create();
 
             if (newNode != NULL) {
                 Node* current = position(pos);
@@ -61,11 +55,15 @@ public:
             Node* current = position(pos);
             Node* toDel = current->next;
 
+            if (m_current == toDel) {
+                m_current = toDel->next;
+            }
+
             current->next = toDel->next;
             element = toDel->element;
-            delete toDel;
-
             m_length--;
+
+            destroy(toDel);
         }
 
         return ret;
@@ -130,7 +128,7 @@ public:
 
             m_header.next = toDel->next;
             m_length--;
-            delete toDel;
+            destroy(toDel);
         }
     }
 
@@ -181,6 +179,23 @@ public:
     ~LinkList()
     {
         clear();
+    }
+
+protected:
+    struct Node : public Object
+    {
+        T element;
+        Node* next;
+    };
+
+    virtual Node* create()
+    {
+        return new Node;
+    }
+
+    virtual void destroy(Node* pn)
+    {
+        delete pn;
     }
 
 private:

@@ -23,10 +23,7 @@ Exception::Exception(const char *message, const char *file, const int line)
 
 void Exception::init(const char *message, const char *file, int line)
 {
-    if (message)
-        m_message = strdup(message);
-    else
-        m_message = nullptr;
+    m_message = message ? strdup(message) : NULL;
 
     if (file != nullptr) {
         char sline[16];

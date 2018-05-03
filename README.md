@@ -15,6 +15,8 @@ NPLib, A Reusable Cpp language DataStruct LIB. Develop by QtCreator5.10.1 Compil
   - InvalidParameterException
 - List
   - SeqList
+  - LinkList
+  - StaticLinkList
 - SeqList
   - StaticList
   - DynamicList
