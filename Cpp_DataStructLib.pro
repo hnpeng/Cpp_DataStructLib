@@ -4,7 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 include(TestCase/TestCase.pri)
-include(SmartPointer/SmartPointer.pri)
+include(Pointer/Pointer.pri)
 include(Exception/Exception.pri)
 include(Object/Object.pri)
 include(List/List.pri)

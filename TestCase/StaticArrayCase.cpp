@@ -26,6 +26,16 @@ public:
         cout << "SATest(const SATest& obj) i = " << i << endl;
     }
 
+    SATest& operator =(const SATest& rhs)
+    {
+        if (this != &rhs) {
+            i = rhs.i;
+            cout << "SATest& operator =(const SATest& rhs)" << endl;
+        }
+
+        return *this;
+    }
+
     int i;
 };
 
@@ -42,9 +52,12 @@ void StaticArrayCase()
         a[i] = i;
     }
 
-    StaticArray<SATest, 5> aa = a;
+    const StaticArray<SATest, 5> aa = a;
     cout << "aa[1] = " << aa[1] << endl;
-    a[1] = 11;
+    cout << "************" << endl;
+    aa[1] = 11;
+    cout << "************" << endl;
+    cout << "aa[1] = " << aa[1] << endl;
 
     for (int i=0; i<aa.length(); i++) {
         cout << aa[i].i << endl;

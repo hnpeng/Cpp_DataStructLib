@@ -2,11 +2,13 @@
 NPLib, A Reusable Cpp language DataStruct LIB. Develop by QtCreator5.10.1 Compiler: Apple Clang
 
 - Object
-  - SmartPointer
+  - Pointer
   - ArithmeticException
   - List
   - Array
-- SmartPointer
+- Pointer
+  - SmartPointer
+  - SharePointer
 - Exception
   - ArithmeticException
   - NullPointerExcpetion
