@@ -28,9 +28,6 @@ void DynamicListCase()
     }
 
     while (l.length() > 0) {
-        int temp;
-        l.remove(0, temp);
-
-        cout << "remove: " << temp << endl;
+        l.remove(0);
     }
 }

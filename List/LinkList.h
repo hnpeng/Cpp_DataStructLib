@@ -47,7 +47,7 @@ public:
         return insert(m_length, element);
     }
 
-    bool remove(int pos, T& element)
+    bool remove(int pos)
     {
         bool ret = 0 <= pos && pos < m_length;
 
@@ -60,7 +60,6 @@ public:
             }
 
             current->next = toDel->next;
-            element = toDel->element;
             m_length--;
 
             destroy(toDel);
@@ -105,17 +104,16 @@ public:
     int find(const T& element) const
     {
         int ret = -1;
-        int i = 0;
-        Node* current = m_header.next;
+        Node* current = this->m_header.next;
 
-        while (current != NULL) {
+        for (int i=0; i < this->m_length; i++)
+        {
             if (current->element == element) {
                 ret = i;
                 break;
-            } else {
-                i++;
-                current = current->next;
             }
+
+            current = current->next;
         }
 
         return ret;
@@ -137,7 +135,7 @@ public:
         return m_length;
     }
 
-    bool move(int pos, int step = 1)
+    virtual bool move(int pos, int step = 1)
     {
         bool ret = 0 <= pos && pos < m_length;
 
@@ -151,7 +149,7 @@ public:
         return ret;
     }
 
-    bool next()
+    virtual bool next()
     {
         int i;
 
@@ -162,12 +160,12 @@ public:
         return i == m_step;
     }
 
-    bool end()
+    virtual bool end()
     {
         return m_current == NULL;
     }
 
-    T current()
+    virtual T current()
     {
         if (!end()) {
             return m_current->element;
@@ -198,7 +196,6 @@ protected:
         delete pn;
     }
 
-private:
     Node* position(int pos) const
     {
         Node* ret = reinterpret_cast<Node*>(&m_header);
@@ -210,13 +207,12 @@ private:
         return ret;
     }
 
-private:
-
     mutable struct : public Object
     {
         char preserve[sizeof(T)];
         Node* next;
     } m_header;
+
     int m_length;
     int m_step;
     Node* m_current;

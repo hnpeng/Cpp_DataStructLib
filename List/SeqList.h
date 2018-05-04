@@ -33,13 +33,11 @@ public:
         return insert(m_length, element);
     }
 
-    bool remove(int pos, T& element)
+    bool remove(int pos)
     {
         int ret = 0 <= pos && pos < m_length;
 
         if (ret) {
-            element = m_array[pos];
-
             for (int i=pos; i < m_length-1; i++) {
                 m_array[i] = m_array[i+1];
             }

@@ -12,6 +12,7 @@
 #include "TestCase/LinkListCase.h"
 #include "TestCase/StaticLinkListCase.h"
 #include "TestCase/SharePointerCase.h"
+#include "TestCase/CircleListCase.h"
 
 using namespace std;
 //using namespace NPLib;
@@ -27,7 +28,8 @@ int main()
 //    DynamicArrayCase();
 //    LinkListCase();
 //    StaticLinkListCase();
-    SharePointerCase();
+//    SharePointerCase();
+    CircleListCase();
 
     cout << "Hello World!" << endl;
     return 0;

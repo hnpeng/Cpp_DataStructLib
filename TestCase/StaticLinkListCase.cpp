@@ -52,9 +52,7 @@ void StaticLinkListCase()
         cout << l.get(i) << endl;
     }
 
-    SLLTest toRemove;
-    l.remove(1, toRemove);
-    cout << "remove = " << toRemove << endl;
+    l.remove(1);
 
 //    l.clear();
     for (int i=0; i<l.length(); i++) {

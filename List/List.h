@@ -12,7 +12,7 @@ public:
     List() { }
     virtual bool insert(int pos, const T& element) = 0;
     virtual bool append(const T& element) = 0;
-    virtual bool remove(int pos, T& element) = 0;
+    virtual bool remove(int pos) = 0;
     virtual bool get(int pos, T& element) const = 0;
     virtual bool set(int pos, const T& element) = 0;
     virtual int find(const T& element) const = 0;

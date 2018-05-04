@@ -60,10 +60,7 @@ void StaticListCase()
     }
 
     while (l.length() > 0) {
-        SLTest temp(0);
-        if (l.remove(0, temp)) {
-            cout << temp << endl;
-        }
+        l.remove(0);
     }
 
     cout << "l.lenght = " << l.length() << endl;

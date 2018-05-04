@@ -18,10 +18,12 @@ NPLib, A Reusable Cpp language DataStruct LIB. Develop by QtCreator5.10.1 Compil
 - List
   - SeqList
   - LinkList
-  - StaticLinkList
 - SeqList
   - StaticList
   - DynamicList
+- LinkList
+  - StaticLinkList
+  - CircleList
 - Array
   - StaticArray
   - DynamicArray
