@@ -1,0 +1,4 @@
+#ifndef DUALLINKLIST_H
+#define DUALLINKLIST_H
+
+#endif // DUALLINKLIST_H
