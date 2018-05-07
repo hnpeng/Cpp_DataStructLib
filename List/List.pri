@@ -4,4 +4,5 @@ HEADERS += $$PWD/List.h \
     $$PWD/DynamicList.h \
     $$PWD/LinkList.h \
     $$PWD/StaticLinkList.h \
-    $$PWD/CircleList.h
+    $$PWD/CircleList.h \
+    $$PWD/DualLinkList.h

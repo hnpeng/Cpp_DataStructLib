@@ -1,4 +1,251 @@
 #ifndef DUALLINKLIST_H
 #define DUALLINKLIST_H
 
+#include "List.h"
+#include "Exception/Exception.h"
+
+namespace NPLib {
+
+template <typename T>
+class DualLinkList : public List<T>
+{
+public:
+    DualLinkList()
+    {
+        m_header.next = NULL;
+        m_header.pre = NULL;
+        m_length = 0;
+        m_step = 1;
+        m_current = NULL;
+    }
+
+    bool insert(int pos, const T& element)
+    {
+        bool ret = 0 <= pos && pos <= m_length;
+
+        if (ret) {
+            Node* newNode = create();
+
+            if (newNode != NULL) {
+                Node* current = position(pos);
+                Node* next = current->next;
+
+                newNode->element = element;
+
+                newNode->next = next;
+                current->next = newNode;
+
+                if (current != reinterpret_cast<Node*>(&m_header)) {
+                    newNode->pre = current;
+                } else {
+                    newNode->pre = NULL;
+                }
+
+                if (next != NULL) {
+                    next->pre = newNode;
+                }
+
+                m_length++;
+            } else {
+                THROW_EXCEPTION(NoEnoughMemoryException, "No memory to create Node ...");
+            }
+
+        }
+
+        return ret;
+    }
+
+    bool append(const T& element)
+    {
+        return insert(m_length, element);
+    }
+
+    bool remove(int pos)
+    {
+        bool ret = 0 <= pos && pos < m_length;
+
+        if (ret) {
+            Node* current = position(pos);
+            Node* toDel = current->next;
+            Node* next = toDel->next;
+
+            if (m_current == toDel) {
+                m_current = next;
+            }
+
+            current->next = next;
+
+            if (next != NULL) {
+                next->pre = toDel->pre;
+            }
+
+            m_length--;
+
+            destroy(toDel);
+        }
+
+        return ret;
+    }
+
+    bool get(int pos, T& element) const
+    {
+        bool ret = 0 <= pos && pos < m_length;
+
+        if (ret) {
+            element = position(pos)->next->element;
+        }
+
+        return ret;
+    }
+
+    T get(int pos) const
+    {
+        T ret;
+
+        if (get(pos, ret)) {
+            return ret;
+        } else {
+            THROW_EXCEPTION(InvalidParameterException, "Invalid parameter pos ...");
+        }
+    }
+
+    bool set(int pos, const T& element)
+    {
+        bool ret = 0 <= pos && pos < m_length;
+
+        if (ret) {
+            position(pos)->next->element = element;
+        }
+
+        return ret;
+    }
+
+    int find(const T& element) const
+    {
+        int ret = -1;
+        Node* current = this->m_header.next;
+
+        for (int i=0; i < this->m_length; i++)
+        {
+            if (current->element == element) {
+                ret = i;
+                break;
+            }
+
+            current = current->next;
+        }
+
+        return ret;
+    }
+
+    void clear()
+    {
+        while (m_length > 0) {
+            remove(0);
+        }
+    }
+
+    int length() const
+    {
+        return m_length;
+    }
+
+    virtual bool move(int pos, int step = 1)
+    {
+        bool ret = 0 <= pos && pos < m_length;
+
+        ret = ret && step > 0;
+
+        if (ret) {
+            m_step = step;
+            m_current = position(pos)->next;
+        }
+
+        return ret;
+    }
+
+    virtual bool next()
+    {
+        int i;
+
+        for (i=0; i<m_step && m_current != NULL; i++) {
+            m_current = m_current->next;
+        }
+
+        return i == m_step;
+    }
+
+    virtual bool pre()
+    {
+        int i;
+
+        for (i=0; i<m_step && m_current != NULL; i++) {
+            m_current = m_current->pre;
+        }
+
+        return i == m_step;
+    }
+
+    virtual bool end()
+    {
+        return m_current == NULL;
+    }
+
+    virtual T current()
+    {
+        if (!end()) {
+            return m_current->element;
+        } else {
+            THROW_EXCEPTION(InvalidOperationExcpetion, "No value at current position ...");
+        }
+    }
+
+    ~DualLinkList()
+    {
+        clear();
+    }
+
+protected:
+    struct Node : public Object
+    {
+        T element;
+        Node* next;
+        Node* pre;
+    };
+
+    virtual Node* create()
+    {
+        return new Node;
+    }
+
+    virtual void destroy(Node* pn)
+    {
+        delete pn;
+    }
+
+    Node* position(int pos) const
+    {
+        Node* ret = reinterpret_cast<Node*>(&m_header);
+
+        for (int i=0; i<pos; i++) {
+            ret = ret->next;
+        }
+
+        return ret;
+    }
+
+    mutable struct : public Object
+    {
+        char preserve[sizeof(T)];
+        Node* next;
+        Node* pre;
+    } m_header;
+
+    int m_length;
+    int m_step;
+    Node* m_current;
+};
+
+}
+
 #endif // DUALLINKLIST_H

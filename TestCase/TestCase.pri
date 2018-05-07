@@ -8,7 +8,8 @@ HEADERS += $$PWD/SmartPointerCase.h \
     $$PWD/LinkListCase.h \
     $$PWD/StaticLinkListCase.h \
     $$PWD/SharePointerCase.h \
-    $$PWD/CircleListCase.h
+    $$PWD/CircleListCase.h \
+    $$PWD/DualLinkListCase.h
 SOURCES += $$PWD/SmartPointerCase.cpp \
     $$PWD/ExceptionCase.cpp \
     $$PWD/ObjectCase.cpp \
@@ -19,4 +20,5 @@ SOURCES += $$PWD/SmartPointerCase.cpp \
     $$PWD/LinkListCase.cpp \
     $$PWD/StaticLinkListCase.cpp \
     $$PWD/SharePointerCase.cpp \
-    $$PWD/CircleListCase.cpp
+    $$PWD/CircleListCase.cpp \
+    $$PWD/DualLinkListCase.cpp
